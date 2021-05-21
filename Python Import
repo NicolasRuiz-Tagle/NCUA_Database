@@ -1,5 +1,31 @@
+import numpy as np
 import pandas as pd
 
-
+#Create Dataframe from txt
 FS220N = pd.read_csv('/home/nicolas/Downloads/FS220N.txt')
 
+import sqlalchemy
+
+engine = sqlalchemy.create_engine('mysql+mysqlconnector://host:temppass@localhost:3306/sqlalchemy', echo=True)
+
+Create table FACT_FS22N by readjusting indexes and using pd.melt
+
+
+pd.melt(FS220N.reset_index(), id_vars=['CU_Number', 'CYCLE_DATE', 'JOIN_NUMBER'], value_vars=['ACCT_AS0001', 'ACCT_AS0003',
+       'ACCT_AS0004', 'ACCT_AS0005', 'ACCT_AS0010', 'ACCT_AS0041',
+       'ACCT_AS0048', 'ACCT_AS0050', 'ACCT_AS0051', 'ACCT_AS0052',
+       'ACCT_AS0053', 'ACCT_AS0054', 'ACCT_AS0055', 'ACCT_AS0056',
+       'ACCT_AS0057', 'ACCT_AS0058', 'ACCT_AS0059', 'ACCT_AS0060',
+       'ACCT_AS0061', 'ACCT_AS0062', 'ACCT_AS0063', 'ACCT_AS0064',
+       'ACCT_AS0065', 'ACCT_AS0066', 'ACCT_AS0067', 'ACCT_AS0068',
+       'ACCT_AS0069', 'ACCT_AS0070', 'ACCT_AS0071', 'ACCT_AS0072',
+       'ACCT_AS0073', 'ACCT_DL0121', 'ACCT_EQ0009', 'ACCT_IS0004',
+       'ACCT_IS0011', 'ACCT_IS0012', 'ACCT_IS0013', 'ACCT_IS0016',
+       'ACCT_IS0017', 'ACCT_IS0021', 'ACCT_IS0022', 'ACCT_LC0047',
+       'ACCT_LC0085', 'ACCT_LI0003', 'ACCT_LI0069', 'ACCT_LN0050',
+       'ACCT_LN0051', 'ACCT_LN0052', 'ACCT_LN0053', 'ACCT_LN0054',
+       'ACCT_LN0055', 'ACCT_LN0056', 'ACCT_LN0057', 'ACCT_NW0001',
+       'ACCT_NW0002', 'ACCT_NW0010', 'ACCT_PC0001', 'ACCT_PC0002',
+       'ACCT_PC0003', 'ACCT_PC0004', 'ACCT_PC0005', 'ACCT_PC0006',
+       'ACCT_PC0007', 'ACCT_PC0008', 'ACCT_PC0009', 'ACCT_PC0010',
+       'ACCT_SL0003'], var_name='var_name', value_name='value').to_sql('FACT_FS220N',engine)
