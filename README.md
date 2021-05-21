@@ -1,6 +1,4 @@
-# NCUA5300CallReport_ETL
-
-iformation about the data provided:
+# Iformation about the data provided:
 
  5300 Call Report Quarterly Data Reports 
 -------------------------------------------------------------
@@ -47,7 +45,7 @@ List of Files Included
 -----------------------
    Following is a list of files included in a cycle's Zip file.
 
-   	  FOICUDES.txt
+   	      FOICUDES.txt
           AcctDesc.txt
           ATM Locations.txt
           Credit Union Branch Information.txt
@@ -103,38 +101,36 @@ Contents of each file in the Zip file
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-Overview
+PROJECT OVERVIEW
 
-This Reports contain almost 2,700 Facts (Accounts), from over 5,000 Credit Unions in over 17 tables. The information is stored as two dimension tables, with each row repreenting a specific credit union and each column an account. The number of accounts varies by table, but the one I worked on had 70 columns.
-As I want to link each credit union with information about the credit union(DIM_Credit_Unions), and each account with all the information about that account (DIM_Accounts), I will feed the information of these tables to a dimensional model.
+This Reports contain almost 2,700 Facts (Accounts), from over 5,000 Credit Unions in over 17 tables. The information is stored as two dimension tables, with each row representing a specific credit union and each column an account. The number of accounts varies by table, but the one I worked on had 70 columns.
+As I want to link each credit union with information about the credit union (FOICUDES.txt) that I will transform into the dimension table DIM_Credit_Unions, and each account with all the information from AcctDesc.txt transformed ito DIM_Accounts, we will need to reshape the information provided. 
+          
 
-Will not go into data types or conseps that make a relational database.
+Will not go into data types, table design or RDB conceps. I will just show a summary of what I expect to create:
 
-This Relational Model is composed of 3 Dimensions that will be shared by all Fact tables.
+3 Dimensions that will be shared by all Fact tables.
 DIM_Credit_Union
 DIM_Date
 DIM_Accounts
 
+One fact table with foreign keys linked to our dimension tables and a fact column.
 FACT_FS220
 CU_Number       FK to DIM_Credit_Union
 CYCLE_DATE      FK to DIM_Date
 Account_name    FK to DIM_Accounts
 value          FACT
 
-This program will focus in create the Fact tables. As an example everithing will be done with table FS220, but the code can be modifed to be used in all tables. To do this we need to transform the data provided by NCUA into a 1 dimension Fact table.
+This program will focus on creating the Fact table and how to populate it. As an example everithing will be done with table FS220, but the code can be modifed to be used in all tables that will be loaded into the same FACT_Table. To do this we need to transform the data provided by NCUA into a 1 dimension Fact table.
  
  
 Requirements
-
-    Anaconda - We will be using Jupyter Notebooks and the code will be written in Python.
-    SQL Database - We will be using mySQL for this particular ETL, but the code can be updated for use in Oracle, SQL Server.
+Anaconda - We will be using Jupyter Notebooks and the code will be written in Python.
+SQL Database - We will be using mySQL for this particular ETL, but the code can be updated for use in Oracle, SQL Server.
 
 
 Procedure:
-
-    Navigate to the NCUA website containing the zip files. Website can be found here: https://www.ncua.gov/analysis/credit-union-corporate-call-report-data/quarterly-data
-
-    Download the desired zip file that you will be extracting.
-    Open the Python import fdocument to access the code
+Download the desired zip file that you will be extracting.
+Open the Python import document to access the code
 
 
