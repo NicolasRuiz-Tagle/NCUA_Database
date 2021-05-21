@@ -135,6 +135,6 @@ Procedure:
     Navigate to the NCUA website containing the zip files. Website can be found here: https://www.ncua.gov/analysis/credit-union-corporate-call-report-data/quarterly-data
 
     Download the desired zip file that you will be extracting.
-    Open the Python upload file to acces the code
+    Open the Python import fdocument to access the code
 
 
