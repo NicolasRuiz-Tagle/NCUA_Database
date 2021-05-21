@@ -1,3 +1,5 @@
+```python
+
 import numpy as np
 import pandas as pd
 
@@ -29,3 +31,5 @@ pd.melt(FS220N.reset_index(), id_vars=['CU_Number', 'CYCLE_DATE', 'JOIN_NUMBER']
        'ACCT_PC0003', 'ACCT_PC0004', 'ACCT_PC0005', 'ACCT_PC0006',
        'ACCT_PC0007', 'ACCT_PC0008', 'ACCT_PC0009', 'ACCT_PC0010',
        'ACCT_SL0003'], var_name='var_name', value_name='value').to_sql('FACT_FS220N',engine)
+       
+       ```
