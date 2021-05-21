@@ -1,4 +1,4 @@
-# Iformation about the data provided:
+# Information about the data provided:
 
  5300 Call Report Quarterly Data Reports 
 -------------------------------------------------------------
